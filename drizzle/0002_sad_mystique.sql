@@ -1,0 +1,1 @@
+ALTER TABLE "expenses" ALTER COLUMN "category_id" SET DATA TYPE integer;
