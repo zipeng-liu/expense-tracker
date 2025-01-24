@@ -1,28 +1,16 @@
+"use client"; // (Optional) Only if you need client-side behavior
+
 import { Suspense } from "react";
 import SubmitExpense from "./(create)/submit-expense";
 import Expenses from "../components/expenses";
-import ExpenseListSkeleton from "../components/skeletons/ExpenseListSkeleton";
 import CreateExpenseFormSkeleton from "../components/skeletons/CreateExpenseFormSkeleton";
+import ExpenseListSkeleton from "../components/skeletons/ExpenseListSkeleton";
 
-// Next.js 13 automatically gives you `searchParams` as an object, not a Promise.
-// You can explicitly type it like this:
-interface PageProps {
-  searchParams?: {
-    [key: string]: string | string[] | undefined;
-  };
-}
-
-export default function Page({ searchParams }: PageProps) {
-  // Safely handle `searchParams` and its potential structure:
-  const date =
-    searchParams && typeof searchParams.date === "string"
-      ? searchParams.date
-      : undefined;
-
+export default function Page() {
   return (
     <>
       {/* Background gradient */}
-      <div className="fixed top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-500 to-purple-500 z-0" />
+      <div className="fixed top-0 left-0 w-full h-full bg-gradient-to-tr from-blue-500 to-purple-500 z-0"></div>
 
       {/* Main content */}
       <main className="flex justify-center w-full bg-transparent overflow-x-hidden relative z-10">
@@ -34,7 +22,7 @@ export default function Page({ searchParams }: PageProps) {
           </Suspense>
 
           <Suspense fallback={<ExpenseListSkeleton />}>
-            <Expenses date={date} />
+            <Expenses />
           </Suspense>
         </div>
       </main>
