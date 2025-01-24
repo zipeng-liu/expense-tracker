@@ -5,10 +5,10 @@ import ExpenseListSkeleton from "../components/skeletons/ExpenseListSkeleton";
 import CreateExpenseFormSkeleton from "../components/skeletons/CreateExpenseFormSkeleton";
 
 interface HomeProps {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams: Record<string, string | string[] | undefined>;
 }
 
-export default function Home({ searchParams = {} }: HomeProps) {
+export default function Home({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
   const date = typeof searchParams.date === "string" ? searchParams.date : undefined;
 
   return (
